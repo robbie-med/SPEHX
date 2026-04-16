@@ -68,4 +68,23 @@ All 7 images confirmed correct: chest X-ray, fundoscopic, 12-lead ECG, pedigree+
 ### Step 4.2 — Git initialized ✓
 ### Step 4.3 — Files staged and committed ✓ (27 files)
 ### Step 4.4 — Force-push to origin ✓
-### Step 4.5 — Polling for GitHub Pages live...
+### Step 4.5 — GitHub Pages verification ✓
+- ISSUE: Pages deployed "success" but returned 404 — Pages was configured as GitHub Actions source with no workflow
+- FIX: Added .github/workflows/pages.yml to explicitly upload docs/ as pages artifact
+- Live checks: HTML ✓, 86 questions ✓, q07 image 200 ✓
+
+**Phase 4 COMPLETE**
+
+---
+
+## Build Complete
+
+- Phase 1 (PDF Extraction): DONE — 86 questions, 7 images, text fixes applied
+- Phase 2 (Explanations): DONE — 430 explanations generated via 4 parallel agents (workaround for truncated API key)
+- Phase 3 (Frontend): DONE — index.html, style.css, app.js deployed
+- Phase 4 (Deploy): DONE — force-pushed, added Pages workflow, live
+
+Live URL: https://robbie-med.github.io/SPEHX/
+Questions: 86
+Images: 7
+Explanations: 430 (86 × 5 choices)
