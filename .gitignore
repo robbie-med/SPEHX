@@ -1,0 +1,6 @@
+scripts/node_modules/
+scripts/renders/
+.env
+*.env
+.DS_Store
+Thumbs.db

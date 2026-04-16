@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPEX Practice Test</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header id="app-header">
+    <div id="header-top">
+      <h1>SPEX Practice Test</h1>
+      <div id="score-display" aria-live="polite">Score: 0/0</div>
+    </div>
+    <div id="progress-track">
+      <div id="progress-fill"></div>
+    </div>
+    <div id="header-bottom">
+      <span id="question-counter">Question 1 of 86</span>
+      <button id="reset-btn" class="btn btn-ghost">Reset Progress</button>
+    </div>
+  </header>
+
+  <main id="question-area">
+    <div id="loading">Loading questions…</div>
+  </main>
+
+  <footer id="app-nav">
+    <button id="prev-btn" class="btn btn-secondary" disabled>← Previous</button>
+    <button id="next-btn" class="btn btn-primary">Next →</button>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

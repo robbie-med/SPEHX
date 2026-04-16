@@ -1,0 +1,360 @@
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --color-bg:               #f8f9fa;
+  --color-surface:          #ffffff;
+  --color-border:           #dee2e6;
+  --color-text:             #212529;
+  --color-text-muted:       #6c757d;
+  --color-primary:          #0d6efd;
+  --color-primary-hover:    #0b5ed7;
+  --color-correct-bg:       #d1e7dd;
+  --color-correct-border:   #198754;
+  --color-correct-text:     #0f5132;
+  --color-incorrect-bg:     #f8d7da;
+  --color-incorrect-border: #dc3545;
+  --color-incorrect-text:   #842029;
+  --color-set-bg:           #e7f1ff;
+  --color-set-border:       #b6d4fe;
+  --font-body:              Georgia, 'Times New Roman', serif;
+  --font-ui:                system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-base:         17px;
+  --font-size-sm:           14px;
+  --line-height:            1.75;
+  --max-width:              800px;
+  --radius:                 8px;
+}
+
+html { font-size: var(--font-size-base); }
+
+body {
+  font-family: var(--font-body);
+  font-size:   var(--font-size-base);
+  line-height: var(--line-height);
+  color:       var(--color-text);
+  background:  var(--color-bg);
+  padding-bottom: 80px; /* clearance for sticky footer */
+}
+
+/* ── Header ── */
+#app-header {
+  position:   sticky;
+  top:        0;
+  z-index:    100;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding:    12px 16px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+#header-top {
+  display:         flex;
+  justify-content: space-between;
+  align-items:     baseline;
+  margin-bottom:   8px;
+}
+
+#app-header h1 {
+  font-family: var(--font-ui);
+  font-size:   18px;
+  font-weight: 700;
+  color:       var(--color-text);
+}
+
+#score-display {
+  font-family: var(--font-ui);
+  font-size:   var(--font-size-sm);
+  font-weight: 600;
+  color:       var(--color-text);
+}
+
+/* Progress bar */
+#progress-track {
+  height:        6px;
+  background:    var(--color-border);
+  border-radius: 3px;
+  overflow:      hidden;
+  margin-bottom: 8px;
+}
+
+#progress-fill {
+  height:     100%;
+  width:      0%;
+  background: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+#header-bottom {
+  display:         flex;
+  justify-content: space-between;
+  align-items:     center;
+  padding-bottom:  10px;
+}
+
+#question-counter {
+  font-family: var(--font-ui);
+  font-size:   var(--font-size-sm);
+  color:       var(--color-text-muted);
+}
+
+/* ── Main Question Area ── */
+#question-area {
+  max-width: var(--max-width);
+  margin:    0 auto;
+  padding:   24px 16px;
+}
+
+/* Set vignette */
+.set-header {
+  background:    var(--color-set-bg);
+  border:        1px solid var(--color-set-border);
+  border-radius: var(--radius);
+  padding:       16px 20px;
+  margin-bottom: 20px;
+}
+
+.set-label {
+  font-family:   var(--font-ui);
+  font-size:     var(--font-size-sm);
+  font-weight:   700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color:         var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.set-vignette {
+  font-style: italic;
+  color:      var(--color-text);
+}
+
+/* Question image */
+.question-image {
+  margin:        0 0 20px;
+  text-align:    center;
+}
+
+.question-image img {
+  max-width:     100%;
+  max-height:    400px;
+  object-fit:    contain;
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.question-image figcaption {
+  font-family: var(--font-ui);
+  font-size:   var(--font-size-sm);
+  color:       var(--color-text-muted);
+  margin-top:  6px;
+  font-style:  italic;
+}
+
+/* Question number + stem */
+.question-number {
+  font-family: var(--font-ui);
+  font-size:   var(--font-size-sm);
+  font-weight: 600;
+  color:       var(--color-text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.question-stem {
+  font-size:     var(--font-size-base);
+  line-height:   var(--line-height);
+  margin-bottom: 20px;
+  color:         var(--color-text);
+}
+
+.question-stem pre {
+  background:    #f4f4f4;
+  border:        1px solid var(--color-border);
+  border-radius: 4px;
+  padding:       10px 14px;
+  margin:        10px 0;
+  font-size:     var(--font-size-sm);
+  overflow-x:    auto;
+  white-space:   pre;
+}
+
+/* ── Answer Choices ── */
+.choices {
+  display:        flex;
+  flex-direction: column;
+  gap:            10px;
+  margin-bottom:  16px;
+}
+
+.choice-btn {
+  display:       block;
+  width:         100%;
+  text-align:    left;
+  background:    var(--color-surface);
+  border:        2px solid var(--color-border);
+  border-radius: var(--radius);
+  padding:       12px 16px;
+  cursor:        pointer;
+  font-family:   var(--font-body);
+  font-size:     var(--font-size-base);
+  line-height:   var(--line-height);
+  color:         var(--color-text);
+  transition:    border-color 0.15s, background 0.15s;
+}
+
+.choice-btn:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  background:   #f0f6ff;
+}
+
+.choice-btn:disabled {
+  cursor: default;
+}
+
+/* Choice label "(A)" */
+.choice-letter {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  margin-right: 8px;
+  color:       var(--color-text-muted);
+}
+
+/* Answered states */
+.choice-btn.correct {
+  background:    var(--color-correct-bg);
+  border-color:  var(--color-correct-border);
+  color:         var(--color-correct-text);
+}
+
+.choice-btn.correct .choice-letter {
+  color: var(--color-correct-border);
+}
+
+.choice-btn.incorrect {
+  background:    var(--color-incorrect-bg);
+  border-color:  var(--color-incorrect-border);
+  color:         var(--color-incorrect-text);
+}
+
+.choice-btn.incorrect .choice-letter {
+  color: var(--color-incorrect-border);
+}
+
+/* Explanation text */
+.explanation {
+  margin-top:  10px;
+  padding-top: 10px;
+  border-top:  1px solid currentColor;
+  opacity:     0.85;
+  font-size:   calc(var(--font-size-base) - 1px);
+  line-height: 1.6;
+}
+
+/* Hidden explanations (for choices not selected and not correct) */
+.choice-btn.answered-other .explanation {
+  display: none;
+}
+
+.choice-btn.answered-other.show-all .explanation {
+  display: block;
+}
+
+/* Show-all toggle */
+#show-all-btn {
+  font-family: var(--font-ui);
+  font-size:   var(--font-size-sm);
+  color:       var(--color-primary);
+  background:  none;
+  border:      none;
+  cursor:      pointer;
+  padding:     4px 0;
+  text-decoration: underline;
+}
+
+#show-all-btn:hover {
+  color: var(--color-primary-hover);
+}
+
+/* ── Footer Nav ── */
+#app-nav {
+  position:        fixed;
+  bottom:          0;
+  left:            0;
+  right:           0;
+  display:         flex;
+  justify-content: space-between;
+  padding:         12px 20px;
+  background:      var(--color-surface);
+  border-top:      1px solid var(--color-border);
+  box-shadow:      0 -2px 8px rgba(0,0,0,0.06);
+  max-width:       100%;
+}
+
+/* ── Buttons ── */
+.btn {
+  font-family: var(--font-ui);
+  font-size:   var(--font-size-sm);
+  font-weight: 600;
+  padding:     8px 18px;
+  border-radius: calc(var(--radius) - 2px);
+  border:      2px solid transparent;
+  cursor:      pointer;
+  transition:  background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor:  not-allowed;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color:      #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.btn-secondary {
+  background:   var(--color-surface);
+  color:        var(--color-text);
+  border-color: var(--color-border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--color-bg);
+}
+
+.btn-ghost {
+  background:  none;
+  color:       var(--color-text-muted);
+  font-size:   var(--font-size-sm);
+  font-weight: 400;
+  padding:     4px 8px;
+}
+
+.btn-ghost:hover {
+  color: var(--color-incorrect-border);
+}
+
+/* ── Loading state ── */
+#loading {
+  text-align:  center;
+  color:       var(--color-text-muted);
+  padding:     60px 0;
+  font-family: var(--font-ui);
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  :root { --font-size-base: 16px; }
+
+  #app-header h1 { font-size: 15px; }
+
+  .choice-btn { padding: 10px 12px; }
+
+  #app-nav { padding: 10px 12px; }
+}
